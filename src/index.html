@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studio Prime</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ═══ CUSTOM TITLEBAR ═══ -->
+  <header id="titlebar">
+    <div class="titlebar-drag">
+      <div class="app-brand">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <rect x="2" y="3" width="20" height="18" rx="3" stroke="var(--accent)" stroke-width="2"/>
+          <circle cx="12" cy="12" r="4" fill="var(--accent)"/>
+        </svg>
+        <span class="app-name">Studio Prime</span>
+      </div>
+    </div>
+    <div class="titlebar-controls">
+      <button id="btn-min" class="tb-btn" aria-label="Minimize">
+        <svg width="12" height="12" viewBox="0 0 12 12"><line x1="2" y1="6" x2="10" y2="6" stroke="currentColor" stroke-width="1.5"/></svg>
+      </button>
+      <button id="btn-max" class="tb-btn" aria-label="Maximize">
+        <svg width="12" height="12" viewBox="0 0 12 12"><rect x="2" y="2" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+      </button>
+      <button id="btn-close" class="tb-btn tb-close" aria-label="Close">
+        <svg width="12" height="12" viewBox="0 0 12 12"><line x1="2" y1="2" x2="10" y2="10" stroke="currentColor" stroke-width="1.5"/><line x1="10" y1="2" x2="2" y2="10" stroke="currentColor" stroke-width="1.5"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ═══ MAIN LAYOUT ═══ -->
+  <main id="workspace">
+
+    <!-- ── LEFT PANEL ── -->
+    <aside id="panel">
+      <div class="panel-scroll">
+
+        <!-- Sources -->
+        <section class="panel-section">
+          <h3 class="section-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/><line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" stroke-width="2"/></svg>
+            Display Source
+          </h3>
+          <div class="source-row">
+            <select id="screen-select">
+              <option value="">Select a source…</option>
+            </select>
+            <button id="btn-refresh" class="icon-btn" title="Refresh sources">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M21 12a9 9 0 1 1-2.64-6.36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><polyline points="21 3 21 9 15 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </section>
+
+        <!-- Camera -->
+        <section class="panel-section">
+          <h3 class="section-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M23 7l-7 5 7 5V7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="1" y="5" width="15" height="14" rx="2" stroke="currentColor" stroke-width="2"/></svg>
+            Camera
+          </h3>
+          <div class="toggle-row">
+            <select id="camera-select">
+              <option value="">No camera</option>
+            </select>
+            <label class="switch">
+              <input type="checkbox" id="camera-toggle" />
+              <span class="switch-track"><span class="switch-thumb"></span></span>
+            </label>
+          </div>
+        </section>
+
+        <!-- Microphone -->
+        <section class="panel-section">
+          <h3 class="section-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="9" y="1" width="6" height="12" rx="3" stroke="currentColor" stroke-width="2"/><path d="M5 10a7 7 0 0 0 14 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" stroke-width="2"/><line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            Microphone
+          </h3>
+          <div class="toggle-row">
+            <select id="mic-select">
+              <option value="">No microphone</option>
+            </select>
+            <label class="switch">
+              <input type="checkbox" id="mic-toggle" checked />
+              <span class="switch-track"><span class="switch-thumb"></span></span>
+            </label>
+          </div>
+          <div class="audio-meter" id="mic-meter">
+            <div class="meter-bar"><div class="meter-fill"></div></div>
+          </div>
+        </section>
+
+        <!-- System Audio -->
+        <section class="panel-section">
+          <h3 class="section-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            System Audio
+          </h3>
+          <div class="toggle-row-single">
+            <span class="toggle-label">Capture desktop audio</span>
+            <label class="switch">
+              <input type="checkbox" id="sysaudio-toggle" checked />
+              <span class="switch-track"><span class="switch-thumb"></span></span>
+            </label>
+          </div>
+        </section>
+
+        <hr class="panel-divider" />
+
+        <!-- Webcam Overlay Settings -->
+        <section class="panel-section">
+          <h3 class="section-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/><rect x="12" y="12" width="8" height="8" rx="2" fill="currentColor" opacity="0.4" stroke="currentColor" stroke-width="1.5"/></svg>
+            Webcam Overlay
+          </h3>
+
+          <label class="setting-label">Position</label>
+          <div class="position-grid">
+            <button class="pos-btn" data-pos="top-left" title="Top Left">
+              <span class="pos-dot"></span>
+            </button>
+            <button class="pos-btn" data-pos="top-right" title="Top Right">
+              <span class="pos-dot"></span>
+            </button>
+            <button class="pos-btn" data-pos="bottom-left" title="Bottom Left">
+              <span class="pos-dot"></span>
+            </button>
+            <button class="pos-btn active" data-pos="bottom-right" title="Bottom Right">
+              <span class="pos-dot"></span>
+            </button>
+          </div>
+
+          <label class="setting-label">Size</label>
+          <div class="slider-row">
+            <input type="range" id="webcam-size" min="8" max="40" value="22" />
+            <span id="webcam-size-val" class="slider-val">22%</span>
+          </div>
+
+          <label class="setting-label">Shape</label>
+          <div class="shape-group">
+            <button class="shape-btn active" data-shape="circle" title="Circle">
+              <svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+            </button>
+            <button class="shape-btn" data-shape="rounded" title="Rounded">
+              <svg width="20" height="20" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+            </button>
+            <button class="shape-btn" data-shape="square" title="Square">
+              <svg width="20" height="20" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+            </button>
+          </div>
+
+          <label class="setting-label">Border</label>
+          <div class="border-row">
+            <label class="switch">
+              <input type="checkbox" id="border-toggle" checked />
+              <span class="switch-track"><span class="switch-thumb"></span></span>
+            </label>
+            <input type="color" id="border-color" value="#00d4ff" class="color-pick" />
+          </div>
+        </section>
+
+        <hr class="panel-divider" />
+
+        <!-- Output Settings -->
+        <section class="panel-section">
+          <h3 class="section-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" stroke="currentColor" stroke-width="2"/></svg>
+            Output
+          </h3>
+
+          <label class="setting-label">Format</label>
+          <select id="format-select">
+            <option value="webm">WebM — Fast, native</option>
+            <option value="mp4" selected>MP4 — Universal</option>
+            <option value="wav">WAV — Audio only</option>
+          </select>
+
+          <label class="setting-label">Resolution</label>
+          <select id="resolution-select">
+            <option value="native" selected>Native — Source resolution</option>
+            <option value="2160">4K — 3840 × 2160</option>
+            <option value="1440">1440p — 2560 × 1440</option>
+            <option value="1080">1080p — 1920 × 1080</option>
+            <option value="720">720p — 1280 × 720</option>
+          </select>
+
+          <label class="setting-label">Quality</label>
+          <select id="quality-select">
+            <option value="2500000">Low — 2.5 Mbps</option>
+            <option value="5000000">Medium — 5 Mbps</option>
+            <option value="8000000">High — 8 Mbps</option>
+            <option value="15000000" selected>Very High — 15 Mbps</option>
+            <option value="25000000">Ultra — 25 Mbps</option>
+            <option value="50000000">Extreme — 50 Mbps</option>
+          </select>
+
+          <label class="setting-label">Frame Rate</label>
+          <select id="fps-select">
+            <option value="24">24 fps — Cinematic</option>
+            <option value="30">30 fps — Standard</option>
+            <option value="60" selected>60 fps — Smooth</option>
+            <option value="120">120 fps — Pro</option>
+          </select>
+        </section>
+      </div>
+    </aside>
+
+    <!-- ── PREVIEW ── -->
+    <div id="preview-area">
+      <div id="preview-wrapper">
+        <canvas id="preview-canvas"></canvas>
+        <div id="empty-state">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+            <rect x="2" y="3" width="20" height="14" rx="2" stroke="var(--text-muted)" stroke-width="1.5"/>
+            <line x1="8" y1="21" x2="16" y2="21" stroke="var(--text-muted)" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="12" y1="17" x2="12" y2="21" stroke="var(--text-muted)" stroke-width="1.5"/>
+            <polygon points="10,7 10,13 15,10" fill="var(--text-muted)" opacity="0.5"/>
+          </svg>
+          <p>Select a display source to begin</p>
+          <span class="empty-hint">Choose a screen or window from the left panel</span>
+        </div>
+
+        <!-- Countdown overlay -->
+        <div id="countdown" class="hidden">
+          <span id="countdown-num">3</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ═══ BOTTOM CONTROLS ═══ -->
+  <footer id="controls-bar">
+    <div class="ctrl-left">
+      <div id="rec-badge" class="hidden">
+        <span class="rec-dot"></span>
+        <span class="rec-label">REC</span>
+      </div>
+      <span id="timer">00:00:00</span>
+    </div>
+
+    <div class="ctrl-center">
+      <button id="btn-record" class="ctrl-btn btn-record" title="Record  (Ctrl+Shift+R)">
+        <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="currentColor"/></svg>
+      </button>
+      <button id="btn-pause" class="ctrl-btn" disabled title="Pause  (Ctrl+Shift+P)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
+      </button>
+      <button id="btn-stop" class="ctrl-btn" disabled title="Stop">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><rect x="4" y="4" width="16" height="16" rx="2"/></svg>
+      </button>
+    </div>
+
+    <div class="ctrl-right">
+      <span id="shortcut-hint" class="hint-text">Ctrl+Shift+R to record</span>
+    </div>
+  </footer>
+
+  <!-- ═══ TOAST NOTIFICATIONS ═══ -->
+  <div id="toast-container"></div>
+
+  <!-- Hidden video elements for capture -->
+  <video id="screen-video" muted playsinline style="position:absolute;left:-9999px;top:-9999px;"></video>
+  <video id="webcam-video" muted playsinline style="position:absolute;left:-9999px;top:-9999px;"></video>
+
+  <!-- ═══ CONVERSION PROGRESS OVERLAY ═══ -->
+  <div id="convert-overlay" class="hidden">
+    <div class="convert-modal">
+      <div class="convert-spinner"></div>
+      <p class="convert-title">Converting to <span id="convert-format">MP4</span>…</p>
+      <div class="convert-progress-bar">
+        <div class="convert-progress-fill" id="convert-fill"></div>
+      </div>
+      <span class="convert-percent" id="convert-percent">0%</span>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

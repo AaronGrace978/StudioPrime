@@ -1,0 +1,108 @@
+name: release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            name: Windows x64
+            args: --win --x64 --publish never
+          - os: macos-latest
+            name: macOS
+            args: --mac --x64 --arm64 --publish never
+          - os: ubuntu-22.04
+            name: Linux x64
+            args: --linux --x64 --publish never
+
+    runs-on: ${{ matrix.os }}
+    name: Build ${{ matrix.name }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install Linux packaging deps
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y rpm fakeroot
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Package
+        run: npx electron-builder ${{ matrix.args }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: StudioPrime-${{ matrix.os }}
+          path: |
+            dist/*.exe
+            dist/*.dmg
+            dist/*.zip
+            dist/*.AppImage
+            dist/*.deb
+            dist/*.blockmap
+          if-no-files-found: warn
+
+      - name: Publish GitHub Release
+        if: github.ref_type == 'tag'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: Studio Prime ${{ github.ref_name }}
+          draft: false
+          prerelease: false
+          fail_on_unmatched_files: false
+          files: |
+            dist/*.exe
+            dist/*.dmg
+            dist/*.zip
+            dist/*.AppImage
+            dist/*.deb
+            dist/*.blockmap
+          body: |
+            **Studio Prime is free.** No license key, no subscription, no paywall — every capture feature ships unlocked.
+
+            Screen & game recorder for creators: direct stream recording, webcam overlay, system audio + mic, MP4 / WebM / WAV export, H.264 hardware encoding, and FFmpeg conversion with a live progress bar.
+
+            ### Downloads
+            | Platform | File |
+            | -------- | ---- |
+            | Windows installer | `StudioPrime-<version>-win-x64-setup.exe` |
+            | Windows portable | `StudioPrime-<version>-win-x64-portable.exe` |
+            | macOS Apple Silicon | `StudioPrime-<version>-mac-arm64.dmg` |
+            | macOS Intel | `StudioPrime-<version>-mac-x64.dmg` |
+            | Linux | `StudioPrime-<version>-linux-x86_64.AppImage` / `*-linux-amd64.deb` |
+
+            See `DOWNLOADS.md` in the repo for install notes.
+
+            ### What's included
+            - Game / screen / window capture
+            - Webcam overlay (circle, rounded, square)
+            - System audio + microphone mix
+            - MP4, WebM, and WAV export
+            - Bitrate presets through 50 Mbps
+            - Resolution presets through 4K
+            - 24 / 30 / 60 / 120 fps
+            - DXGI capture backend on Windows
+            - Bundled FFmpeg conversion

@@ -1,6 +1,23 @@
 # Studio Prime
 
-Premium screen & game capture for creators — built with Electron.
+Free screen & game capture for creators — built with Electron.
+
+**No license key. No subscription. No paywall.** Every feature is unlocked, including 4K, 50 Mbps, and 120 fps.
+
+## Downloads
+
+Grab installers from the latest GitHub Release:
+
+**https://github.com/AaronGrace978/StudioPrime/releases/latest**
+
+| Platform | Installer |
+| -------- | --------- |
+| Windows | `StudioPrime-*-win-x64-setup.exe` (or `*-portable.exe`) |
+| macOS Apple Silicon | `StudioPrime-*-mac-arm64.dmg` |
+| macOS Intel | `StudioPrime-*-mac-x64.dmg` |
+| Linux | `StudioPrime-*-linux-x64.AppImage` or `.deb` |
+
+Full install notes: [DOWNLOADS.md](DOWNLOADS.md)
 
 ## Features
 
@@ -19,12 +36,14 @@ Premium screen & game capture for creators — built with Electron.
 - **Global Shortcuts** — `Ctrl+Shift+R` to record/stop, `Ctrl+Shift+P` to pause/resume
 - **Live Mic Meter** — visual audio level indicator
 
-## Quick Start
+## Quick Start (from source)
 
 ```bash
 npm install
 npm start
 ```
+
+On Windows you can also double-click `StudioPrime.bat`.
 
 ## Keyboard Shortcuts
 
@@ -61,9 +80,19 @@ npm start
 ## Build
 
 ```bash
-npx electron-builder --win
+npm install
+
+# current platform
+npm run build
+
+# per-OS
+npm run build:win
+npm run build:mac
+npm run build:linux
 ```
+
+Installers land in `dist/`. GitHub Actions also builds Windows, macOS, and Linux on every `v*` tag.
 
 ## License
 
-MIT
+MIT — free to use, share, and ship.

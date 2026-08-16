@@ -93,6 +93,18 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
+.app-edition {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-dim);
+  border: 1px solid rgba(0, 212, 255, 0.35);
+  border-radius: 999px;
+  padding: 2px 7px;
+}
+
 .titlebar-controls {
   display: flex;
   -webkit-app-region: no-drag;

@@ -15,7 +15,7 @@ Grab installers from the latest GitHub Release:
 | Windows | `StudioPrime-*-win-x64-setup.exe` (or `*-portable.exe`) |
 | macOS Apple Silicon | `StudioPrime-*-mac-arm64.dmg` |
 | macOS Intel | `StudioPrime-*-mac-x64.dmg` |
-| Linux | `StudioPrime-*-linux-x64.AppImage` or `.deb` |
+| Linux | `StudioPrime-*-linux-x86_64.AppImage` or `*-linux-amd64.deb` |
 
 Full install notes: [DOWNLOADS.md](DOWNLOADS.md)
 

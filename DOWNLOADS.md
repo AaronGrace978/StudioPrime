@@ -14,8 +14,8 @@ Studio Prime is **free**. No license, no subscription, no paywall.
 | **Windows portable** | `StudioPrime-1.0.0-win-x64-portable.exe` | [Download](https://github.com/AaronGrace978/StudioPrime/releases/download/v1.0.0/StudioPrime-1.0.0-win-x64-portable.exe) |
 | **macOS Apple Silicon** | `StudioPrime-1.0.0-mac-arm64.dmg` | [Download](https://github.com/AaronGrace978/StudioPrime/releases/download/v1.0.0/StudioPrime-1.0.0-mac-arm64.dmg) |
 | **macOS Intel** | `StudioPrime-1.0.0-mac-x64.dmg` | [Download](https://github.com/AaronGrace978/StudioPrime/releases/download/v1.0.0/StudioPrime-1.0.0-mac-x64.dmg) |
-| **Linux AppImage** | `StudioPrime-1.0.0-linux-x64.AppImage` | [Download](https://github.com/AaronGrace978/StudioPrime/releases/download/v1.0.0/StudioPrime-1.0.0-linux-x64.AppImage) |
-| **Linux .deb** | `StudioPrime-1.0.0-linux-x64.deb` | [Download](https://github.com/AaronGrace978/StudioPrime/releases/download/v1.0.0/StudioPrime-1.0.0-linux-x64.deb) |
+| **Linux AppImage** | `StudioPrime-1.0.0-linux-x86_64.AppImage` | [Download](https://github.com/AaronGrace978/StudioPrime/releases/download/v1.0.0/StudioPrime-1.0.0-linux-x86_64.AppImage) |
+| **Linux .deb** | `StudioPrime-1.0.0-linux-amd64.deb` | [Download](https://github.com/AaronGrace978/StudioPrime/releases/download/v1.0.0/StudioPrime-1.0.0-linux-amd64.deb) |
 
 ---
 
@@ -46,11 +46,11 @@ Open the `.dmg` → drag **Studio Prime** into Applications → launch (right-cl
 
 ### Linux
 ```bash
-chmod +x StudioPrime-1.0.0-linux-x64.AppImage
-./StudioPrime-1.0.0-linux-x64.AppImage
+chmod +x StudioPrime-1.0.0-linux-x86_64.AppImage
+./StudioPrime-1.0.0-linux-x86_64.AppImage
 ```
 
-Or: `sudo dpkg -i StudioPrime-1.0.0-linux-x64.deb`
+Or: `sudo dpkg -i StudioPrime-1.0.0-linux-amd64.deb`
 
 ### From source
 ```bash

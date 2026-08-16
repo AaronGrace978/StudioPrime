@@ -92,7 +92,7 @@ jobs:
             | Windows portable | `StudioPrime-<version>-win-x64-portable.exe` |
             | macOS Apple Silicon | `StudioPrime-<version>-mac-arm64.dmg` |
             | macOS Intel | `StudioPrime-<version>-mac-x64.dmg` |
-            | Linux | `StudioPrime-<version>-linux-x64.AppImage` / `.deb` |
+            | Linux | `StudioPrime-<version>-linux-x86_64.AppImage` / `*-linux-amd64.deb` |
 
             See `DOWNLOADS.md` in the repo for install notes.
 
